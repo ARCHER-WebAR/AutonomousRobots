@@ -175,17 +175,17 @@ void WallFollower::scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr sc
     {
         /* The robot is moving towards to the closed target at speed of forward_velocity_*/
         if(min_value>(following_distance_+buffer_zone_)){
-            if(abs(angle_L)>PI/4.0){
+            if(abs(angle_L)>PI/4.0){ //approach if more than 45 degrees
 
-
-                if (wall_side_ > 0) {
+ 
+                if (wall_side_ > 0) { //turn
                     // Left wall
                     if (angle_L > 0)
                         cmd_vel_msg.angular.z = 1.0;
                     else
                         cmd_vel_msg.angular.z = -1.0;
                 }
-                else {
+                else { //forward
                     // Right wall
                     if (angle_L < 0)
                         cmd_vel_msg.angular.z = -1.0;
