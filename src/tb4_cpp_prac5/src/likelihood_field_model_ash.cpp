@@ -77,7 +77,7 @@ namespace iar_amcl
                         Check whether a failure measurement is detected, i.e., max range is detected. If yes, update the probability
                     */
 
-                    pz += self->z_hit_ * exp(-(dist*dist) / (2*self->sigma_hit_ * self->sigma_hit_));
+
 
                     if (obs_range == data->range_max) {
                         pz += self->z_max_;
@@ -108,7 +108,7 @@ namespace iar_amcl
                         else {
                             dist = self->map_->max_occ_dist;
                         }   
-
+                    pz += self->z_hit_ * exp(-(dist*dist) / (2*self->sigma_hit_ * self->sigma_hit_));
                     }
 
                     
